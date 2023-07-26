@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Item</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <form action="{{ url_for('edit', index=index) }}" method="post">
+        <label for="todo">Task:</label>
+        <input type="text" id="todo" name="description" value="{{ todo['task'] }}">
+        <label for="due_date">Due Date:</label>
+        <input type="date" id="due_date" name="due_date" value="{{ todo['due_date'] }}">
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category" value="{{ todo['category'] }}">
+        <label for="priority">Priority:</label>
+        <input  id="priority" name="priority" value="{{ todo['priority'] }}">
+        <button type="Submit" name="Submit">Save</button>
+    </form>
+</body>
+</html>

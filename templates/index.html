@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Todo Webapp</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <h1>Todos</h1>
+    <table>
+      <tr>
+        <th>Task</th>
+        <th>Due Date</th>
+        <th>Category</th>
+        <th>Priority</th>
+        <th>Is Done</th>
+        <th>Need Edit</th>
+        <th>Need Delete</th>
+      </tr>
+        {% for todo in todos %}
+        <tr>
+            <td>{{ todo['task'] }}</td>
+            <td>{{ todo['due_date'] }}</td>
+            <td>{{ todo['category'] }}</td>
+            <td>{{ todo['priority'] }}</td>
+            <td><input type="checkbox" name="done" {% if todo['done'] %} checked {%endif%}
+                onchange="this.form.submit()">
+                <a href="{{ url_for('check', index=loop.index0) }}">Done</a></td>
+            <td><a href="{{ url_for('edit', index=loop.index0) }}">Edit</a></td>
+            <td><a href="{{ url_for('delete', index=loop.index0) }}">Delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <hr>
+    <p>Do you want to add a new item to the list?</p>
+    <p>Get to work!</p>
+    <form action="{{ url_for('add') }}" method="post">
+        <label for="todo">Task:</label>
+        <input type="text" id="todo" name="description">
+        <label for="due_date">Due Date:</label>
+        <input type="date" id="due_date" name="due_date">
+        <label for="category">Category:</label>
+        <input type="text" id="category" name="category">
+        <label for="priority">Priority:</label>
+        <select  id="priority" name="priority">
+            <option>Do It Now (Urgent and Important)</option>
+            <option>Decide When To Do It (Important Not Urgent)</option>
+            <option>Delegate It (Urgent Not Important)</option>
+            <option>Dump It (Not Important Not Urgent)</option>
+        </select>
+        <button type="Submit" name="Submit">Add Todo</button>
+    </form>
+</body>
+</html>

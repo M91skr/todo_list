@@ -1,0 +1,30 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  background: #331D2C;
+  color: #EFE1D1;
+  text-align: center;
+}
+
+table, th, td {
+  border: 1px solid white;
+  border-collapse: collapse;
+}
+
+table {
+  width: 100%;
+}
+
+th, td {
+  background-color: #A78295;
+  height: 70px;
+}
+
+input {
+  margin-right: 10px;
+}
+
+button {
+  margin: 10px;
+}
